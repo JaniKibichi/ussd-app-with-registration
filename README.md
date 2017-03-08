@@ -29,25 +29,21 @@ $apikey     = "yourAPIKey";
 
 - users
 mysql> describe users;
-+-------------+----------------------------+------+-----+---------+-------+
-| Field       | Type                       | Null | Key | Default | Extra |
-+-------------+----------------------------+------+-----+---------+-------+
-| username    | varchar(30)                | YES  |     | NULL    |       |
-| phonenumber | varchar(20)                | YES  |     | NULL    |       |
-| city        | varchar(30)                | YES  |     | NULL    |       |
-| status      | enum('ACTIVE','SUSPENDED') | YES  |     | NULL    |       |
-+-------------+----------------------------+------+-----+---------+-------+
+| Field         | Type                         | Null  | Key | Default | Extra |
+| ------------- |:----------------------------:| -----:|----:| -------:| -----:|
+| username      | varchar(30)                  |   YES |     | NULL    |       |
+| phonenumber   | varchar(20)                  |   YES |     | NULL    |       |
+| city          | varchar(30)                  |   YES |     | NULL    |       |
+| status        | enum('ACTIVE','SUSPENDED')   |   YES |     | NULL    |       |
 4 rows in set (0.53 sec)
 
 - session_levels
 mysql> describe session_levels;
-+-------------+-------------+------+-----+---------+-------+
-| Field       | Type        | Null | Key | Default | Extra |
-+-------------+-------------+------+-----+---------+-------+
-| session_id  | varchar(50) | YES  |     | NULL    |       |
-| phoneNumber | varchar(25) | YES  |     | NULL    |       |
-| level       | tinyint(1)  | YES  |     | NULL    |       |
-+-------------+-------------+------+-----+---------+-------+
+| Field         | Type                         | Null  | Key | Default | Extra |
+| ------------- |:----------------------------:| -----:|----:| -------:| -----:|
+| session_id    | varchar(50)                  |   YES |     | NULL    |       |
+| phonenumber   | varchar(25)                  |   YES |     | NULL    |       |
+| level         | tinyint(1)                   |   YES |     | NULL    |       |
 3 rows in set (0.02 sec)
 
 

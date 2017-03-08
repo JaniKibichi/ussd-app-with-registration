@@ -29,6 +29,8 @@ $apikey     = "yourAPIKey";
 
 - users
 mysql> describe users;
+
+
 | Field         | Type                         | Null  | Key | Default | Extra |
 | ------------- |:----------------------------:| -----:|----:| -------:| -----:|
 | username      | varchar(30)                  |   YES |     | NULL    |       |
@@ -39,6 +41,8 @@ mysql> describe users;
 
 - session_levels
 mysql> describe session_levels;
+
+
 | Field         | Type                         | Null  | Key | Default | Extra |
 | ------------- |:----------------------------:| -----:|----:| -------:| -----:|
 | session_id    | varchar(50)                  |   YES |     | NULL    |       |

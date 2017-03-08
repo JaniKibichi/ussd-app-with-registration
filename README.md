@@ -5,7 +5,7 @@
 code provided on this [repository]() to create a USSD that allows users to get registered and then access a menu of services.
 
 ##Prerequisites
-- First, create a config.php file in your root directory and fill in your Africa's Talking API credentials asd below.
+- First, create a config.php file in your root directory and fill in your Africa's Talking API credentials as below.
 
 ```PHP
 <?php
@@ -21,11 +21,35 @@ $apikey     = "yourAPIKey";
 
 - Assuming that you are doing your development on a localhost, you have to expose your application living in the webroot of your localshost to the internet via a tunneling application like [Ngrok](https://ngrok.com/). Otherwise, if your server has a public IP, you are good to go!
 
-- This application has been developed on an Ubuntu 16.04LTS and lives in the web root at /var/www/html/RegUSSD. Courtesy of Ngrok, the publicly accessible url is: https://b11cd817.ngrok.io which is referenced in the code as well.
+- This application has been developed on an Ubuntu 16.04LTS and lives in the web root at /var/www/html/RegUSSD. Courtesy of Ngrok, the publicly accessible url is: https://b11cd817.ngrok.io which is referenced in the code as well. (Create your own which will be different.)
 
 - The webhook or callback to this application therefore becomes: https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php. To allow the application to talk to the Africa's Talking USSD gateway, this callback URL is placed in the dashboard, [under ussd callbacks here](https://account.africastalking.com/ussd/callback).
 
 - Finally, this application works with a connection to a MYSQL database. Create a database with a name, username and password of your choice. Also create a session_levels table and a users table. These details are configured in the dbConnector.php and this is required in the main application script RegistrationUSSD.php.
+
+- users
+mysql> describe users;
++-------------+----------------------------+------+-----+---------+-------+
+| Field       | Type                       | Null | Key | Default | Extra |
++-------------+----------------------------+------+-----+---------+-------+
+| username    | varchar(30)                | YES  |     | NULL    |       |
+| phonenumber | varchar(20)                | YES  |     | NULL    |       |
+| city        | varchar(30)                | YES  |     | NULL    |       |
+| status      | enum('ACTIVE','SUSPENDED') | YES  |     | NULL    |       |
++-------------+----------------------------+------+-----+---------+-------+
+4 rows in set (0.53 sec)
+
+- session_levels
+mysql> describe session_levels;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| session_id  | varchar(50) | YES  |     | NULL    |       |
+| phoneNumber | varchar(25) | YES  |     | NULL    |       |
+| level       | tinyint(1)  | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
 
 ##Features on the Services List
 - This USSD application has the following user journey.

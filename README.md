@@ -48,13 +48,13 @@ mysql> describe session_levels;
 
 
 ##Features on the Services List
-- This USSD application has the following user journey.
+This USSD application has the following user journey.
 
-..* The user dials the ussd code - something like `*384*303#`
+- The user dials the ussd code - something like `*384*303#`
 
-..* The application checks if the user is registered or not. If the user is registered, the services menu is served which allows the user to receive SMS, receive Airtime or receive a call with an IVR menu.
+- The application checks if the user is registered or not. If the user is registered, the services menu is served which allows the user to receive SMS, receive Airtime or receive a call with an IVR menu.
 
-..* In case the user is not registered, the application prompts the user for their name and city (with validations), before successfully serving the services menu.
+- In case the user is not registered, the application prompts the user for their name and city (with validations), before successfully serving the services menu.
 
 ##Code walkthrough
 This documentation is for the USSD application that lives in https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php.

@@ -27,9 +27,7 @@ $apikey     = "yourAPIKey";
 
 - Finally, this application works with a connection to a MYSQL database. Create a database with a name, username and password of your choice. Also create a session_levels table and a users table. These details are configured in the dbConnector.php and this is required in the main application script RegistrationUSSD.php.
 
-- users
 mysql> describe users;
-
 
 | Field         | Type                         | Null  | Key | Default | Extra |
 | ------------- |:----------------------------:| -----:|----:| -------:| -----:|
@@ -39,9 +37,7 @@ mysql> describe users;
 | status        | enum('ACTIVE','SUSPENDED')   |   YES |     | NULL    |       |
 4 rows in set (0.53 sec)
 
-- session_levels
 mysql> describe session_levels;
-
 
 | Field         | Type                         | Null  | Key | Default | Extra |
 | ------------- |:----------------------------:| -----:|----:| -------:| -----:|

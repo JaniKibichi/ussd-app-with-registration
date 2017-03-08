@@ -19,11 +19,15 @@ $apikey     = "yourAPIKey";
 ```
 - You need to set up on the sandbox and [create](https://sandbox.africastalking.com/ussd/createchannel) a USSD channel that you will use to test by dialing into it via our [simulator](https://simulator.africastalking.com:1517/).
 
-- Assuming that you are doing your development on a localhost, you have to expose your application living in the webroot of your localshost to the internet via a tunneling application like [Ngrok](https://ngrok.com/). Otherwise, if your server has a public IP, you are good to go!
+- Assuming that you are doing your development on a localhost, you have to expose your application living in the webroot of your localshost to the internet via a tunneling application like [Ngrok](https://ngrok.com/). Otherwise, if your server has a public IP, you are good to go! Your URL callback for this demo will become:
+ http://<your ip address>/RegUSSD/RegistrationUSSD.php
 
-- This application has been developed on an Ubuntu 16.04LTS and lives in the web root at /var/www/html/RegUSSD. Courtesy of Ngrok, the publicly accessible url is: https://b11cd817.ngrok.io which is referenced in the code as well. (Create your own which will be different.)
+- This application has been developed on an Ubuntu 16.04LTS and lives in the web root at /var/www/html/RegUSSD. Courtesy of Ngrok, the publicly accessible url is: https://b11cd817.ngrok.io (instead of http://localhost) which is referenced in the code as well. 
+(Create your own which will be different.)
 
-- The webhook or callback to this application therefore becomes: https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php. To allow the application to talk to the Africa's Talking USSD gateway, this callback URL is placed in the dashboard, [under ussd callbacks here](https://account.africastalking.com/ussd/callback).
+- The webhook or callback to this application therefore becomes: 
+https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php. 
+To allow the application to talk to the Africa's Talking USSD gateway, this callback URL is placed in the dashboard, [under ussd callbacks here](https://account.africastalking.com/ussd/callback).
 
 - Finally, this application works with a connection to a MYSQL database. Create a database with a name, username and password of your choice. Also create a session_levels table and a users table. These details are configured in the dbConnector.php and this is required in the main application script RegistrationUSSD.php.
 

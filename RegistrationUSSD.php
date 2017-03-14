@@ -25,11 +25,6 @@ if(!empty($_POST)){
   		$level = $result['level'];
 	}
 
-	//6. Update level accordingly
-	if($result){
-		$level = $result['level'];
-	}
-
 	//7. Check if the user is in the db
 	$sql7 = "SELECT * FROM users WHERE phoneNumber LIKE '%".$phoneNumber."%' LIMIT 1";
 	$userQuery=$db->query($sql7);

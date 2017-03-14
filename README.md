@@ -92,10 +92,12 @@ The AT USSD gateway keeps chaining the user response. We want to grab the latest
 	$userResponse=trim(end($textArray));
 ```
 
-Interactions with the user can be managed using the received sessionId and a level management process that your application implements as follows.
-The USSD session has a set time limit(20-180 secs based on provider) under which the sessionId does not change. Using this sessionId, it is easy to navigate your user across the USSD menus by graduating their level(menu step) so that you dont serve them the same menu or lose track of where the user is. 
-..* Set the default level to 0 (or your own numbering scheme) -- the home menu.
-..* Check the session_levels table for a user with the same phone number as that received in the HTTP POST. If this exists, the user is returning and they therefore have a stored level. Grab that level and serve that user the right menu. Otherwise, serve the user the home menu.
+- Interactions with the user can be managed using the received sessionId and a level management process that your application implements as follows.
+
+- The USSD session has a set time limit(20-180 secs based on provider) under which the sessionId does not change. Using this sessionId, it is easy to navigate your user across the USSD menus by graduating their level(menu step) so that you dont serve them the same menu or lose track of where the user is. 
+
+- Set the default level to 0 (or your own numbering scheme) -- the home menu.
+- Check the session_levels table for a user with the same phone number as that received in the HTTP POST. If this exists, the user is returning and they therefore have a stored level. Grab that level and serve that user the right menu. Otherwise, serve the user the home menu.
 ```PHP
 	//4. Set the default level of the user
 	$level=0;
@@ -336,6 +338,7 @@ switch ($level) {
 ## Complexities of Voice.
 - The voice service included in this script requires a few juggling acts and probably requires a short review of its own.
 When the user requests a to get a call, the following happens.
+
 a) The script at https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php requests the call() method through the Africa's Talking Voice Gateway, passing the number to be called and the caller/dialer Id. The call is made and it comes into the users phone. When they answer isActive becomes 1.
 
 ```PHP
@@ -359,6 +362,7 @@ a) The script at https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php requests
 ```			        
 b) As a result, Africa's Talking gateway check the callback for the voice number in this case +254711082300.
 c) The callback is a script we have created in the root folder of this application voiceCall.php whose URL is: 	https://b11cd817.ngrok.io/RegUSSD/voiceCall.php
+
 d) The instructions are to respond with a text to speech message for the user to enter dtmf digits.
 
 ```PHP						
@@ -398,7 +402,11 @@ if ($isActive == 1)  {
 
 ?>
 ```
-e) When the user enters the digit - in this case 0, 1 or 2, this digit is submitted to another script also at the root folder voiceMenu.php which lives at https://b11cd817.ngrok.io/RegUSSD/voiceMenu.php and which switches between the various dtmf digits to make an outgoing call to the right recipient, who will be bridged to speak to the person currently listening to music on hold. We specify this music with the ringtone flag as follows: ringbackTone="http://62.12.117.25:8010/media/SautiFinaleMoney.mp3"
+e) When the user enters the digit - in this case 0, 1 or 2, this digit is submitted to another script also at the root folder voiceMenu.php. 
+
+This script - in our case- lives at https://b11cd817.ngrok.io/RegUSSD/voiceMenu.php and which switches between the various dtmf digits to make an outgoing call to the right recipient, who will be bridged to speak to the person currently listening to music on hold. 
+
+We specify this music with the ringtone flag as follows: ringbackTone="http://62.12.117.25:8010/media/SautiFinaleMoney.mp3"
 
 ```PHP
 <?php

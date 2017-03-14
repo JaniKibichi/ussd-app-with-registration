@@ -1,11 +1,11 @@
-#Setting Up a USSD with Registration
+# Setting Up a USSD with Registration
 
-####A step-by-step guide
+#### A step-by-step guide
 
 - Setting up the logic for USSD is easy with the [Africa's Talking API](docs.africastalking.com/ussd). This is a guide to how to use the
 code provided on this [repository](https://github.com/JaniKibichi/ussd-app-with-registration) to create a USSD that allows users to get registered and then access a menu of services.
 
-##Prerequisites
+## Prerequisites
 - First, create a config.php file in your root directory and fill in your Africa's Talking API credentials as below.
 
 ```PHP
@@ -52,7 +52,7 @@ mysql> describe session_levels;
 3 rows in set (0.02 sec)
 
 
-##Features on the Services List
+## Features on the Services List
 This USSD application has the following user journey.
 
 - The user dials the ussd code - something like `*384*303#`
@@ -61,7 +61,7 @@ This USSD application has the following user journey.
 
 - In case the user is not registered, the application prompts the user for their name and city (with validations), before successfully serving the services menu.
 
-##Code walkthrough
+## Code walkthrough
 This documentation is for the USSD application that lives in https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php.
 
 ```PHP
@@ -333,7 +333,7 @@ switch ($level) {
 }
 ?>
 ```
-##Complexities of Voice.
+## Complexities of Voice.
 - The voice service included in this script requires a few juggling acts and probably requires a short review of its own.
 When the user requests a to get a call, the following happens.
 a) The script at https://b11cd817.ngrok.io/RegUSSD/RegistrationUSSD.php requests the call() method through the Africa's Talking Voice Gateway, passing the number to be called and the caller/dialer Id. The call is made and it comes into the users phone. When they answer isActive becomes 1.

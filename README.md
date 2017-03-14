@@ -1,8 +1,9 @@
 #Setting Up a USSD with Registration
+
 ####A step-by-step guide
 
 - Setting up the logic for USSD is easy with the [Africa's Talking API](docs.africastalking.com/ussd). This is a guide to how to use the
-code provided on this [repository]() to create a USSD that allows users to get registered and then access a menu of services.
+code provided on this [repository](https://github.com/JaniKibichi/ussd-app-with-registration) to create a USSD that allows users to get registered and then access a menu of services.
 
 ##Prerequisites
 - First, create a config.php file in your root directory and fill in your Africa's Talking API credentials as below.

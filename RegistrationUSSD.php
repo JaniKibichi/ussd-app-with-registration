@@ -40,13 +40,11 @@ if(!empty($_POST)){
 			        	//9b. Graduate user to next level & Serve Main Menu
 			        	$sql9b = "INSERT INTO `session_levels`(`session_id`,`phoneNumber`,`level`) VALUES('".$sessionId."','".$phoneNumber."',1)";
 			        	$db->query($sql9b);
-
 			        	//Serve our services menu
 						$response = "CON Karibu " . $userAvailable['username']  . ". Please choose a service.\n";
 						$response .= " 1. Send me todays voice tip.\n";
 						$response .= " 2. Please call me!\n";
 						$response .= " 3. Send me Airtime!\n";
-
 			  			// Print the response onto the page so that our gateway can read it
 			  			header('Content-type: text/plain');
  			  			echo $response;						
@@ -57,10 +55,10 @@ if(!empty($_POST)){
 			        	//9c. Send the user todays voice tip via AT SMS API
 			        	$response = "END Please check your SMS inbox.\n";
 
-						$code = '20880';
+						$code = '44005';
             			$recipients = $phoneNumber;
             			$message    = "https://hahahah12-grahamingokho.c9.io/kaka.mp3";
-            			$gateway    = new AfricasTalkingGateway($username, $apikey);
+            			$gateway    = new AfricasTalkingGateway($username, $apikey, $env);
             			try { $results = $gateway->sendMessage($recipients, $message, $code); }
             			catch ( AfricasTalkingGatewayException $e ) {echo "Encountered an error while sending: ".$e->getMessage(); }
 
@@ -75,9 +73,9 @@ if(!empty($_POST)){
 			          	$response = "END Please wait while we place your call.\n";
 
 			          	//Make a call
-			         	$from="+254711082300"; $to=$phoneNumber;
+			         	$from="+254724587654"; $to=$phoneNumber;
 			          	// Create a new instance of our awesome gateway class
-			          	$gateway = new AfricasTalkingGateway($username, $apikey);
+			          	$gateway = new AfricasTalkingGateway($username, $apikey, $env);
 			          	try { $gateway->call($from, $to); }
 			          	catch ( AfricasTalkingGatewayException $e ){echo "Encountered an error when calling: ".$e->getMessage();}
 
@@ -96,7 +94,7 @@ if(!empty($_POST)){
 						//JSON encode
 						$recipientStringFormat = json_encode($recipients);
 						//Create an instance of our gateway class, pass your credentials
-						$gateway = new AfricasTalkingGateway($username, $apiKey);    
+						$gateway = new AfricasTalkingGateway($username, $apikey, $env);    
 						try { $results = $gateway->sendAirtime($recipientStringFormat);}
 						catch(AfricasTalkingGatewayException $e){ echo $e->getMessage(); }
 

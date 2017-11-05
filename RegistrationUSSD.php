@@ -26,7 +26,7 @@ if(!empty($_POST)){
 	}
 
 	//7. Check if the user is in the db
-	$sql7 = "SELECT * FROM users WHERE phoneNumber LIKE '%".$phoneNumber."%' LIMIT 1";
+	$sql7 = "SELECT * FROM users WHERE phonenumber LIKE '%".$phoneNumber."%' LIMIT 1";
 	$userQuery=$db->query($sql7);
 	$userAvailable=$userQuery->fetch_assoc();
 

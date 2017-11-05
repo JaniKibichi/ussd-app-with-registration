@@ -42,7 +42,7 @@ if(!empty($_POST)){
 			        	$db->query($sql9b);
 
 			        	//Serve our services menu
-						$response = "CON Karibu " . $userAvail['username']  . ". Please choose a service.\n";
+						$response = "CON Karibu " . $userAvailable['username']  . ". Please choose a service.\n";
 						$response .= " 1. Send me todays voice tip.\n";
 						$response .= " 2. Please call me!\n";
 						$response .= " 3. Send me Airtime!\n";
